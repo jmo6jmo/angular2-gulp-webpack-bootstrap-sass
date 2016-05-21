@@ -19,7 +19,8 @@ import { RouterActive } from './router-active';
   directives: [ RouterActive ],
   encapsulation: ViewEncapsulation.None,
   styles: [
-    require('./app.css')
+    require('./app.css'),
+    require('./app.scss').toString()
   ],
   template: `
       <button router-active [routerLink]=" ['Index'] ">

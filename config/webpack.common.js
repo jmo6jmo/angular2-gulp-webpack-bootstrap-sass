@@ -43,7 +43,7 @@ module.exports = {
    * See: http://webpack.github.io/docs/configuration.html#cache
    */
    //cache: false,
-   
+
   /*
    * The entry point for the bundle
    * Our Angular.js app
@@ -161,6 +161,17 @@ module.exports = {
       },
 
       /*
+       * Sass loader support for *.scss files
+       *
+       * See: https://github.com/jtangelder/sass-loader
+       */
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+      },
+
+      /*
        * Raw loader support for *.css files
        * Returns file content as string
        *
@@ -180,6 +191,22 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
+      },
+
+      // Loaders needed for Bootstrap 3 and possibly font-awesome later on
+      {
+        test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
+        loader: 'imports?jQuery=jquery'
+      },
+
+      {
+        test: /\.(woff2?|svg)$/,
+        loader: 'url?limit=10000'
+      },
+
+      {
+        test: /\.(ttf|eot)$/,
+        loader: 'file'
       }
 
     ]
