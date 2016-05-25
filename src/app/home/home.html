@@ -1,5 +1,5 @@
 <div class="card-container">
-  <h1 x-large class="sample-content">Your Content Here</h1>
+  <h1 x-large class="sample-content">{{ name }}</h1>
   <div>
     For hot module reloading run
     <pre>npm run start:hmr</pre>
@@ -25,4 +25,54 @@
 
   </div>
 
+  <div>
+    <h4>Bootstrap-Sass Test</h4>
+    <div class="btn-group" role="group" aria-label="...">
+      <button type="button" class="btn btn-default">Left</button>
+      <button type="button" class="btn btn-default">Middle</button>
+      <button type="button" class="btn btn-default">Right</button>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h4>Font-Awesome Sass Test</h4>
+    <i class="fa fa-flag fa-2x fa-border fa-inverse"></i>
+    <div class="btn-group open">
+      <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> User</a>
+      <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+        <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="#"><i class="fa fa-pencil fa-fw"></i> Edit</a></li>
+        <li><a href="#"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
+        <li><a href="#"><i class="fa fa-ban fa-fw"></i> Ban</a></li>
+        <li class="divider"></li>
+        <li><a href="#"><i class="fa fa-unlock"></i> Make admin</a></li>
+      </ul>
+    </div>
+  </div>
 </div>

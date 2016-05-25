@@ -1,0 +1,10 @@
+@import 'variables';
+
+/**
+ *  If you want to override some font-awesome variables, you have to change values here.
+ *  The list of variables are listed here node_modules/font-awesome/scss/_variables.scss
+ */
+$fa-inverse: $j2c-orange;
+$fa-border-color: $j2c-orange;
+
+@import '~font-awesome/scss/font-awesome.scss';

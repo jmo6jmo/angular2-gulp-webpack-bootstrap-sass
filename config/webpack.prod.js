@@ -30,6 +30,10 @@ const METADATA = webpackMerge(commonConfig.metadata, {
 });
 
 module.exports = webpackMerge(commonConfig, {
+  /**
+   * Report the first error as a hard error instead of tolerating it.
+   */
+  bail: true,
 
   /**
    * Switch loaders to debug mode.

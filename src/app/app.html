@@ -1,0 +1,11 @@
+<button router-active [routerLink]=" ['Index'] ">
+  Index
+</button>
+<button router-active [routerLink]=" ['Home'] ">
+  Home
+</button>
+<button router-active [routerLink]=" ['About'] ">
+  About
+</button>
+<router-outlet></router-outlet>
+<pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>

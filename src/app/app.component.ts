@@ -19,22 +19,9 @@ import { RouterActive } from './router-active';
   directives: [ RouterActive ],
   encapsulation: ViewEncapsulation.None,
   styles: [
-    require('./app.css'),
     require('./app.scss').toString()
   ],
-  template: `
-      <button router-active [routerLink]=" ['Index'] ">
-        Index
-      </button>
-      <button router-active [routerLink]=" ['Home'] ">
-        Home
-      </button>
-      <button router-active [routerLink]=" ['About'] ">
-        About
-      </button>
-      <router-outlet></router-outlet>
-      <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-    `
+  template: require('./app.html')
 })
 @RouteConfig([
   { path: '/',      name: 'Index', component: Home, useAsDefault: true },
@@ -43,10 +30,7 @@ import { RouterActive } from './router-active';
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') }
 ])
 export class App {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
   loading = false;
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
 
   constructor(
     public appState: AppState) {

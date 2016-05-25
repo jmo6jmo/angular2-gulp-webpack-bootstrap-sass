@@ -52,9 +52,9 @@ module.exports = {
    */
   entry: {
 
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
-    'main': './src/main.browser.ts'
+    'polyfills': ['./src/polyfills.ts'],
+    'vendor': ['./src/vendor.ts'],
+    'main': ['./src/main.browser.ts']
 
   },
 
@@ -109,7 +109,7 @@ module.exports = {
        *
        * See: https://github.com/wbuchwalter/tslint-loader
        */
-       // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
+      { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
 
       /*
        * Source map loader support for *.js files
@@ -162,13 +162,13 @@ module.exports = {
 
       /*
        * Sass loader support for *.scss files
+       * resolve-url is needed for font files urls in Bootstrap-Sass and Font-Awesome Sass
        *
        * See: https://github.com/jtangelder/sass-loader
        */
       {
         test: /\.scss$/,
-        exclude: /node_modules/,
-        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+        loaders: ['style', 'css?sourceMap', 'resolve-url?sourceMap', 'sass?sourceMap']
       },
 
       /*
@@ -199,13 +199,17 @@ module.exports = {
         loader: 'imports?jQuery=jquery'
       },
 
+      // the url-loader uses DataUrls.
+      // the file-loader emits files.
       {
-        test: /\.(woff2?|svg)$/,
-        loader: 'url?limit=10000'
+        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        // Limiting the size of the woff fonts breaks font-awesome ONLY for the extract text plugin
+        // loader: "url?limit=10000"
+        loader: "url"
       },
 
       {
-        test: /\.(ttf|eot)$/,
+        test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
         loader: 'file'
       }
 
@@ -247,7 +251,7 @@ module.exports = {
      * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
      */
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['polyfills', 'vendor'].reverse()
+      name: ['main', 'vendor', 'polyfills']
     }),
 
     /*

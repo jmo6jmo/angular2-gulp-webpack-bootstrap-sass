@@ -130,6 +130,17 @@ module.exports = {
        */
       { test: /\.json$/, loader: 'json-loader', exclude: [helpers.root('src/index.html')] },
 
+      /*
+       * Sass loader support for *.scss files
+       *
+       * See: https://github.com/jtangelder/sass-loader
+       */
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+      },
+
       /**
        * Raw loader support for *.css files
        * Returns file content as string

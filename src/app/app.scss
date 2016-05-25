@@ -1,13 +1,10 @@
-md-toolbar ul {
-  display: inline;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 60px;
+@import '../variables';
+
+html, body{
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif
 }
-md-toolbar li {
-  display: inline;
-}
-md-toolbar li.active {
-  background-color: lightgray;
+
+button.active {
+  background-color: $j2c-orange;
 }
