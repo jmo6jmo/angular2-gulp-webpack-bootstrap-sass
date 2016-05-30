@@ -1,6 +1,6 @@
 # README #
 
-An Angular 2 starter with [Gulp](http://gulpjs.com/), [Webpack](http://webpack.github.io/), [Bootstrap-Sass](https://github.com/twbs/bootstrap-sass), [Font-Awesome Sass](http://fontawesome.io/), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [Istanbul](https://github.com/gotwarlost/istanbul) (a fork of [AngularClass' starter](https://github.com/AngularClass/angular2-webpack-starter)).
+An Angular 2 starter (a fork of [AngularClass' starter](https://github.com/AngularClass/angular2-webpack-starter)) with [Gulp](http://gulpjs.com/), [Webpack](http://webpack.github.io/), [Bootstrap-Sass](https://github.com/twbs/bootstrap-sass), [Font-Awesome Sass](http://fontawesome.io/), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [Istanbul](https://github.com/gotwarlost/istanbul).
 
 ### How do I get set up? ###
 
