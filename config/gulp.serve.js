@@ -8,14 +8,14 @@ var WebpackDevServer = require("webpack-dev-server");
 gulp.task('serve', function () {
   process.env.HMR = true;
   var webpackConfig = require('./webpack.dev.js');
-  webpackConfig.entry.main.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
+  webpackConfig.entry.main.unshift("webpack-dev-server/client?" + webpackConfig.metadata.hostPort, "webpack/hot/dev-server");
   var compiler = webpack(webpackConfig);
 
   var server = new WebpackDevServer(compiler, webpackConfig.devServer);
-  server.listen(8080, "localhost", function(err) {
+  server.listen(webpackConfig.metadata.port, webpackConfig.metadata.host, function(err) {
     if (err) throw new gutil.PluginError("serve", err);
     // Server listening
-    gutil.log("[serve]", "http://localhost:8080");
+    gutil.log("[serve]", webpackConfig.metadata.hostPort);
   });
 });
 

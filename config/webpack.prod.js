@@ -15,6 +15,7 @@ const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -63,6 +64,8 @@ module.exports = webpackMerge(commonConfig, {
      * See: http://webpack.github.io/docs/configuration.html#output-path
      */
     path: helpers.root('dist'),
+
+    publicPath: 'http://localhost:3000/',
 
     /**
      * Specifies the name of each output file on disk.
@@ -182,7 +185,9 @@ module.exports = webpackMerge(commonConfig, {
     new CompressionPlugin({
       regExp: /\.css$|\.html$|\.js$|\.map$/,
       threshold: 2 * 1024
-    })
+    }),
+
+    new ExtractTextPlugin('[name].[chunkhash].bundle.css')
 
   ],
 

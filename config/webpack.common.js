@@ -12,12 +12,13 @@ const helpers = require('./helpers');
 var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /*
  * Webpack Constants
  */
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: 'Angular2 Webpack Starter with Gulp and Bootstrap-Sass',
   baseUrl: '/'
 };
 
@@ -162,12 +163,19 @@ module.exports = {
 
       /*
        * Sass loader support for *.scss files
-       * resolve-url is needed for font files urls in Bootstrap-Sass and Font-Awesome Sass
+       * resolve-url is needed for font files urls in Bootstrap-Sass and Font-Awesome Sass for example
        *
        * See: https://github.com/jtangelder/sass-loader
        */
       {
         test: /\.scss$/,
+        exclude: helpers.root('src', 'app'),
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!resolve-url?sourceMap!sass?sourceMap')
+      },
+
+      {
+        test: /\.scss$/,
+        include: helpers.root('src', 'app'),
         loaders: ['style', 'css?sourceMap', 'resolve-url?sourceMap', 'sass?sourceMap']
       },
 
@@ -178,8 +186,15 @@ module.exports = {
        * See: https://github.com/webpack/raw-loader
        */
       {
-        test: /\.css$/,
-        loader: 'raw-loader'
+       test: /\.css$/,
+       exclude: helpers.root('src', 'app'),
+       loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
+      },
+
+      {
+       test: /\.css$/,
+       include: helpers.root('src', 'app'),
+       loader: 'raw-loader'
       },
 
       /* Raw loader support for *.html
@@ -193,6 +208,13 @@ module.exports = {
         exclude: [helpers.root('src/index.html')]
       },
 
+      // images and fonts that are not from node_modules
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        exclude: /node_modules/,
+        loader: 'file?name=assets/[name].[hash].[ext]'
+      },
+
       // Loaders needed for Bootstrap 3 and possibly font-awesome later on
       {
         test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
@@ -203,6 +225,7 @@ module.exports = {
       // the file-loader emits files.
       {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        include: /node_modules/,
         // Limiting the size of the woff fonts breaks font-awesome ONLY for the extract text plugin
         // loader: "url?limit=10000"
         loader: "url"
@@ -210,7 +233,8 @@ module.exports = {
 
       {
         test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
-        loader: 'file'
+        include: /node_modules/,
+        loader: 'file?name=[name].[hash].[ext]'
       }
 
     ]
@@ -277,7 +301,8 @@ module.exports = {
      */
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      chunksSortMode: 'dependency'
+      chunksSortMode: 'dependency',
+      favicon: 'src/favicon.ico'
     })
 
   ],

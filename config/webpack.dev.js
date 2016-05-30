@@ -11,6 +11,7 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
  * Webpack Plugins
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -19,10 +20,12 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HMR = process.env.HMR || helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig.metadata, {
   host: 'localhost',
-  port: 3000,
+  port: 8080,
   ENV: ENV,
   HMR: HMR
 });
+
+METADATA.hostPort = 'http://' + METADATA.host + ':' + METADATA.port + '/';
 
 /**
  * Webpack configuration
@@ -66,6 +69,8 @@ module.exports = webpackMerge(commonConfig, {
      * See: http://webpack.github.io/docs/configuration.html#output-path
      */
     path: helpers.root('dist'),
+
+    publicPath: METADATA.hostPort,
 
     /**
      * Specifies the name of each output file on disk.
@@ -115,6 +120,9 @@ module.exports = webpackMerge(commonConfig, {
     }),
 
     new webpack.HotModuleReplacementPlugin(),
+
+    new ExtractTextPlugin('[name].bundle.css')
+
   ],
 
   /**
@@ -152,6 +160,8 @@ module.exports = webpackMerge(commonConfig, {
       errorDetails: true,
       colors: true
 		},
+    contentBase: 'src/',
+    publicPath: METADATA.hostPort,
     hot: true
   },
 

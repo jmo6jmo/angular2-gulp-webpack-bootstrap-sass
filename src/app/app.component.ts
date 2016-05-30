@@ -31,6 +31,7 @@ import { RouterActive } from './router-active';
 ])
 export class App {
   loading = false;
+  url = 'https://twitter.com/AngularClass';
 
   constructor(
     public appState: AppState) {

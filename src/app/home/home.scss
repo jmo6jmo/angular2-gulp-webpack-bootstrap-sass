@@ -1,1 +1,13 @@
 /*styles for home content only*/
+
+.testImage {
+  width: 128px;
+  height: 128px;
+}
+
+.testImageCss {
+  width: 64px;
+  height: 64px;
+  background-image: url(assets/img/angular-logo.png);
+  background-size: cover;
+}

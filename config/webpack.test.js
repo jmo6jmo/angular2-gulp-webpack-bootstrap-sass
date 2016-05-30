@@ -132,22 +132,25 @@ module.exports = {
 
       /*
        * Sass loader support for *.scss files
+       * resolve-url is needed for font files urls in Bootstrap-Sass and Font-Awesome Sass
        *
        * See: https://github.com/jtangelder/sass-loader
        */
       {
         test: /\.scss$/,
-        exclude: /node_modules/,
-        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+        loaders: ['style', 'css?sourceMap', 'resolve-url?sourceMap', 'sass?sourceMap']
       },
 
-      /**
+      /*
        * Raw loader support for *.css files
        * Returns file content as string
        *
        * See: https://github.com/webpack/raw-loader
        */
-      { test: /\.css$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] },
+      {
+        test: /\.css$/,
+        loader: 'raw-loader'
+      },
 
       /**
        * Raw loader support for *.html
@@ -155,7 +158,14 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      { test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] }
+      { test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] },
+
+      // images and fonts that are not from node_modules
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        exclude: /node_modules/,
+        loader: 'file?name=assets/[name].[hash].[ext]'
+      }
 
     ],
 
