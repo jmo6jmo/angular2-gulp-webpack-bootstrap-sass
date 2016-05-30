@@ -1,10 +1,6 @@
 # README #
 
-An Angular 2 starter with [Gulp](http://gulpjs.com/), [Webpack](http://webpack.github.io/), [Bootstrap-Sass](https://github.com/twbs/bootstrap-sass), [Font-Awesome Sass](http://fontawesome.io/), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [Istanbul](https://github.com/gotwarlost/istanbul) forked from [AngularClass' starter](https://github.com/AngularClass/angular2-webpack-starter).
-
-### What is this repository for? ###
-
-* UI for Client Dashboard
+An Angular 2 starter with [Gulp](http://gulpjs.com/), [Webpack](http://webpack.github.io/), [Bootstrap-Sass](https://github.com/twbs/bootstrap-sass), [Font-Awesome Sass](http://fontawesome.io/), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [Istanbul](https://github.com/gotwarlost/istanbul) (a fork of [AngularClass' starter](https://github.com/AngularClass/angular2-webpack-starter)).
 
 ### How do I get set up? ###
 
